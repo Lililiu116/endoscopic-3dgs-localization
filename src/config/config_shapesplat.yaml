@@ -1,0 +1,118 @@
+# =========================
+# Base configs (anchors)
+# =========================
+
+_base_full: &base_full
+  encoder_mode: finetune_all
+  fusion_mode: full
+  local_size: !!int 8
+  finetune_last_k: !!int 1
+  seed: !!int 123
+  max_epoch: !!int 100
+  save_every: !!int 10
+  learning_rate: !!float 1e-4
+
+_base_finetune: &base_finetune
+  fusion_mode: full
+  local_size: !!int 8
+  finetune_last_k: !!int 1
+  seed: !!int 123
+  max_epoch: !!int 100
+  save_every: !!int 5
+
+
+# =========================
+# 1) Baseline (Full)
+# =========================
+
+A1:
+  <<: *base_finetune
+  encoder_mode: freeze
+  learning_rate: !!float 1e-3
+
+
+# =========================
+# 2) Finetune Ablation
+# =========================
+
+# A2: finetune all layers
+A2:
+  <<: *base_finetune
+  encoder_mode: finetune_all
+  learning_rate: !!float 1e-4
+
+# A3: finetune last k=1
+A3:
+  <<: *base_finetune
+  encoder_mode: finetune_last
+  finetune_last_k: !!int 1
+  learning_rate: !!float 3e-4
+
+# A3_2: finetune last k=2
+A3_2:
+  <<: *base_finetune
+  encoder_mode: finetune_last
+  finetune_last_k: !!int 2
+  learning_rate: !!float 2e-4
+
+
+# =========================
+# 3) Local size sensitivity
+# =========================
+
+# D1: local_size = 4
+D1:
+  <<: *base_full
+  local_size: !!int 4
+
+# D3: local_size = 16
+D3:
+  <<: *base_full
+  local_size: !!int 16
+
+
+# =========================
+# 4) Fusion ablation
+# =========================
+
+# C1: local features only
+C1:
+  <<: *base_full
+  fusion_mode: local_only
+  local_size: !!int 16
+
+# C2: semantic features only
+C2:
+  <<: *base_full
+  fusion_mode: sem_only
+  local_size: !!int 16
+
+# =========================
+# 5) scared finetune: from the best ablation--D3
+# =========================
+best: &best_cfg
+  <<: *base_full
+  local_size: !!int 16
+  learning_rate: !!float 1e-3
+
+scared:
+  <<: *best_cfg
+  dataset: scared
+  learning_rate: !!float 5e-5
+  inliers_only: True
+
+
+scaredgomatch:
+  <<: *best_cfg
+  dataset: scared
+  learning_rate: !!float 1e-4
+  matcher_type: GoMatch
+  inliers_only: True
+# =========================
+# 6) GoMatch
+# =========================
+
+gomatch:
+  <<: *best_cfg
+  matcher_type: GoMatch
+

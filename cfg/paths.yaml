@@ -1,0 +1,12 @@
+split_dir: /mnt/cluster/workspaces/students/liwenliu/2025_Master_Thesis/cfg/split
+datasets:
+  gs_root: /mnt/nct-zfs/TCO-All/SharedDatasets/ShapeSplat
+  gs_root_scared: /mnt/nct-zfs/TCO-All/Projects/MisGS/liwen_rp_output
+
+ckpt:
+  external: /mnt/cluster/workspaces/students/liwenliu/2025_Master_Thesis/localdata/gs_mae_ckpts
+  pretrained_cfg: ext/ShapeSplat-Gaussian_MAE/cfgs/finetune
+  profile: modelnet40_1k 
+  my:    /mnt/cluster/workspaces/students/liwenliu/2025_Master_Thesis/localdata/detector    # 你自己训练产出（或 runs/ckpts）
+
+runs_dir: /mnt/cluster/workspaces/students/liwenliu/2025_Master_Thesis/localdata                       # 可选：tensorboard/log/中间文件

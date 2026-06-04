@@ -1,0 +1,4 @@
+d4k2-train000007.ply
+d2k2-train000126.ply
+d2k3-train000058.ply
+d1k3-train000086.ply

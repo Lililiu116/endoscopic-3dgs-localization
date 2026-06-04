@@ -1,0 +1,16 @@
+[submodule "ext/ShapeSplat-Gaussian_MAE"]
+	path = ext/ShapeSplat-Gaussian_MAE
+	url = https://github.com/qimaqi/ShapeSplat-Gaussian_MAE.git
+[submodule "ext/Pointnet2_PyTorch"]
+	path = ext/Pointnet2_PyTorch
+	url = https://github.com/erikwijmans/Pointnet2_PyTorch.git
+[submodule "ext/diff-gaussian-rasterization-depth"]
+	path = ext/diff-gaussian-rasterization-depth
+	url = https://github.com/leo-frank/diff-gaussian-rasterization-depth.git
+[submodule "ext/EndoGaussian"]
+	path = ext/EndoGaussian
+	url = https://github.com/CUHK-AIM-Group/EndoGaussian.git
+	branch = master
+[submodule "ext/Scared_process"]
+	path = ext/Scared_process
+	url = https://github.com/EikoLoki/MICCAI_challenge_preprocess.git
