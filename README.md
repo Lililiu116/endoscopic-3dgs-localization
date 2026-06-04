@@ -71,7 +71,6 @@ The predicted 2D–3D correspondences are then used for camera pose estimation w
 │   │   └── gs_mae/              # GS-MAE related modules
 │   └── util/                    # Gaussian rendering and helper utilities
 ├── visualizations/              # Figures used in the README and thesis
-├── requirements.txt
 └── README.md
 ```
 ## Reproducibility Status
